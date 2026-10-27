@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Kamase Rante | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           COLOR PALETTE & CSS VARIABLES (Navy & Warm Mocha Sand)
+           ========================================== */
+        :root {
+            --bg-primary: #202940;
+            /* Deep Midnight Navy */
+            --bg-secondary: #4B4038;
+            /* Dark Mocha / Warm Espresso Surface */
+            --bg-card: #383029;
+            /* Dark Espresso Badge */
+            --border-color: #9A8678;
+            /* Almond Taupe Border */
+            --text-main: #fdfaf6;
+            /* Warm Pearl Ivory */
+            --text-muted: #d8c8bc;
+            /* Soft Warm Taupe / Sand */
+            --accent-cyan: #CAAA98;
+            /* Warm Champagne Sand Accent */
+            --accent-glow: rgba(202, 170, 152, 0.20);
+            /* Champagne Glow */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HEADER / NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(75, 64, 56, 0.95) 0%, rgba(45, 38, 48, 0.88) 60%, rgba(32, 41, 64, 0.85) 100%);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(202, 170, 152, 0.30);
+            box-shadow: 0 4px 25px rgba(10, 15, 25, 0.40);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 2rem;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent-cyan);
+            background: rgba(202, 170, 152, 0.12);
+            border: 1px solid rgba(202, 170, 152, 0.35);
+            padding: 0.45rem 1.1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-home:hover {
+            background: var(--accent-cyan);
+            color: #202940;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(202, 170, 152, 0.25);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: #d8c8bc;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            background: rgba(202, 170, 152, 0.12);
+        }
+
+        /* LAYOUT CONTAINER */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin-left: 1rem;
+            opacity: 0.5;
+        }
+
+        .tag-word {
+            color: var(--accent-cyan);
+        }
+
+        .tag-number {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+            padding-bottom: 3rem;
+        }
+
+        .hero-card {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3.5rem;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(75, 64, 56, 0.55) 0%, rgba(32, 41, 64, 0.90) 55%, rgba(75, 64, 56, 0.35) 100%);
+            border: 1px solid rgba(154, 134, 120, 0.35);
+            border-radius: 20px;
+            padding: 3.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(10, 15, 25, 0.45), 0 0 35px rgba(202, 170, 152, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(202, 170, 152, 0.16) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            bottom: -70px;
+            left: -70px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(75, 64, 56, 0.45) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-text,
+        .photo-slideshow {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.3rem, 3.8vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
+        }
+
+        .hero-role {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* ABOUT SECTION */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.3fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        /* ABOUT SLIDESHOW (3 slides) */
+        .about-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 0 30px rgba(202, 170, 152, 0.16);
+            flex-shrink: 0;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem 1rem;
+            margin-top: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .skills-list li {
+            list-style: none;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-list li::before {
+            content: "▹";
+            color: var(--accent-cyan);
+        }
+
+        .about-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .about-card h3 {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Khusus Box Riwayat Pendidikan */
+        #about .about-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 2.2rem 2rem;
+        }
+
+        #about .about-card h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 1.2rem;
+        }
+
+        .edu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .edu-year {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+        }
+
+        .edu-school {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .edu-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* EXPERIENCE SECTION */
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.8rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--accent-cyan);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .timeline-org {
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            text-align: center;
+            padding-bottom: 8rem;
+        }
+
+        #contact .section-title {
+            justify-content: center;
+        }
+
+        #contact .section-title::after {
+            display: none;
+        }
+
+        .contact-desc {
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item i {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+        }
+
+        /* PHOTO SLIDESHOW */
+        .photo-slideshow {
+            position: relative;
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 0 40px rgba(202, 170, 152, 0.18);
+            flex-shrink: 0;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 0;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(32, 41, 64, 0.70) 0%, transparent 50%);
+            z-index: 2;
+        }
+
+        .slide-dots {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 7px;
+            z-index: 3;
+        }
+
+        .slide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .slide-dot.active {
+            background: var(--accent-cyan);
+            transform: scale(1.3);
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-main);
+            background: rgba(32, 41, 64, 0.75);
+            border: 1px solid rgba(154, 134, 120, 0.4);
+            padding: 3px 8px;
+            border-radius: 20px;
+            z-index: 3;
+            backdrop-filter: blur(4px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-primary);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-role {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-info-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #hero {
+                padding-top: 6rem;
+                padding-bottom: 2rem;
+            }
+
+            .hero-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2.2rem 1.5rem;
+            }
+
+            .photo-slideshow {
+                width: 100%;
+                height: 280px;
+            }
+
+            .about-slideshow {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <a href="#hero" class="btn-home" id="btnHome">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about"><span class="tag-word">Tentang</span></a></li>
+                <li><a href="#experience"><span class="tag-word">Pengalaman</span></a></li>
+                <li><a href="#skills"><span class="tag-word">Keahlian</span></a></li>
+                <li><a href="#contact"><span class="tag-word">Kontak</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="hero-card">
+                <!-- Teks kiri -->
+                <div class="hero-text">
+                    <p class="hero-subtitle">Perkenalkan Saya</p>
+                    <h1 class="hero-title">Samuel Kamase Rante</h1>
+                    <h2 class="hero-role">Undergraduate Information Technology Student</h2>
+                    <p class="hero-description">
+                        Mahasiswa Semester 5 Teknologi Informasi di Telkom University Jakarta. Berpengalaman aktif dalam
+                        dunia organisasi, kepanitiaan, serta perlombaan, dengan antusiasme tinggi untuk bekerja dalam tim
+                        dan mempelajari hal baru.
+                    </p>
+                    <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+                </div>
+
+                <!-- Foto slideshow kanan -->
+                <div class="photo-slideshow" id="photoSlideshow">
+                    <div class="slide active">
+                        <img src="DSC07398.JPG" alt="Foto Samuel 1" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide">
+                        <img src="mc.jpeg" alt="Foto Samuel 2" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide">
+                        <img src="DSC00880.JPG" alt="Foto Samuel 3" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide">
+                        <img src="DSC07884.JPG" alt="Foto Samuel 4" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide">
+                        <img src="ketua pelaksana.jpeg" alt="Foto Samuel 5" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <span class="slide-counter" id="slideCounter">1 / 5</span>
+                    <div class="slide-dots" id="slideDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & EDUCATION SECTION -->
+        <section id="about">
+            <h2 class="section-title"><span class="tag-word">Tentang</span> & Pendidikan</h2>
+            <div class="about-content">
+
+                <!-- Teks Tentang -->
+                <div class="about-text">
+                    <p>
+                       Sebagai pemuda berdarah Tana Toraja yang lahir di Jakarta pada 15 Mei 2006, saya tumbuh sebagai pribadi yang aktif bersosialisasi. Saya percaya bahwa komunikasi adalah kunci utama pembuka setiap peluang dalam hidup.
+                    </p>
+                    <p>
+                        Saya memiliki segudang pengalaman di dunia organisasi serta kepanitiaan sejak tingkat SMP hingga
+                        perkuliahan dan disertai beberapa prestasi akademik maupun non-akademik. Saya sangat gemar bekerja secara berkelompok, bertemu dengan orang-orang baru, dan
+                        selalu terbuka untuk mengeksplorasi tantangan baru.
+                    </p>
+                </div>
+
+                <!-- Slideshow 3 Foto -->
+                <div class="about-slideshow" id="aboutSlideshow">
+                    <div class="slide active">
+                        <img src="piala basket.jpeg" alt="Foto About 1" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide">
+                        <img src="piala badmin.jpeg" alt="Foto About 2" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide">
+                        <img src="piala telu.jpeg" alt="Foto About 3" loading="lazy">
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <span class="slide-counter" id="aboutSlideCounter">1 / 3</span>
+                    <div class="slide-dots" id="aboutSlideDots"></div>
+                </div>
+
+                <!-- Riwayat Pendidikan -->
+                <div class="about-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Riwayat Pendidikan</h3>
+
+                    <div class="edu-list">
+                        <div class="edu-item">
+                            <span class="edu-year">2024 - 2028</span>
+                            <div class="edu-school">Telkom University</div>
+                            <p class="edu-desc">S1 Teknologi Informasi - Fakultas Informatika</p>
+                        </div>
+
+                        <div class="edu-item">
+                            <span class="edu-year">2021 - 2024</span>
+                            <div class="edu-school">SMAN 52 Jakarta</div>
+                        </div>
+
+                        <div class="edu-item">
+                            <span class="edu-year">2018 - 2021</span>
+                            <div class="edu-school">SMP KK Marsudirini</div>
+                        </div>
+
+                        <div class="edu-item">
+                            <span class="edu-year">2010 - 2016</span>
+                            <div class="edu-school">SD TKM Marsudirini</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <h2 class="section-title"><span class="tag-word">Pengalaman</span> Organisasi & Kepanitiaan</h2>
+            <div class="experience-timeline">
+
+                <!-- Item 1 -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Koordinator Bidang Organisasi</div>
+                            <div class="timeline-org">PPGT Jemaat Kramat</div>
+                        </div>
+                        <span class="timeline-date">2025 - 2027</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Bertanggung jawab mengkoordinir pemuda Gereja Toraja khususnya di Jemaat Kramat untuk aktif
+                        dalam organisasi PPGT, menciptakan kegiatan pemuda, serta menjadi Admin Database PPGT Jemaat
+                        Kramat.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Panitia Logistik PKKMB Prodi 2025</div>
+                            <div class="timeline-org">Telkom University Jakarta</div>
+                        </div>
+                        <span class="timeline-date">2025</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Bertanggung jawab menyediakan seluruh kebutuhan barang dari setiap divisi, mengatur
+                        layout/setting ruangan yang akan dipakai, serta memimpin dekorasi panggung utama.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Wakil Ketua Pelaksana SMADUCUP 2023</div>
+                            <div class="timeline-org">SMAN 52 Jakarta</div>
+                        </div>
+                        <span class="timeline-date">2023</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Mengelola acara tahunan terbesar SMAN 52 Jakarta yang mengundang seluruh SMA se-Indonesia untuk
+                        berkompetisi melalui berbagai cabang perlombaan.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">OSIS Bidang 5</div>
+                            <div class="timeline-org">SMAN 52 Jakarta</div>
+                        </div>
+                        <span class="timeline-date">2022 - 2023</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Bertanggung jawab atas ekstrakurikuler bola besar dan bola kecil, mengelola administrasi &
+                        pendataan peserta, serta meriset dan mendaftarkan ekskul pada perlombaan terkait.
+                    </p>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">OSIS Bidang Teknologi</div>
+                            <div class="timeline-org">SMAN 52 Jakarta</div>
+                        </div>
+                        <span class="timeline-date">2021 - 2022</span>
+                    </div>
+                    <p class="timeline-desc">
+                        Bertanggung jawab terhadap peralatan elektronik operasional sekolah seperti sound system,
+                        proyektor, komputer, dan perangkat pendukung kegiatan siswa.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2 class="section-title"><span class="tag-word">Keahlian</span> & Kompetensi</h2>
+            <div class="about-card" style="max-width: 100%;">
+                <ul class="skills-list" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                    <li>Berbicara di depan umum (Public Speaking)</li>
+                    <li>Kerja sama tim (Teamwork)</li>
+                    <li>Kepemimpinan (Leadership)</li>
+                    <li>Berfikir Kritis</li>
+                    <li>Membangun Relasi Sosial</li>
+                    <li>Memecahkan Masalah (Problem Solving)</li>
+                    <li>Komunikasi</li>
+                    <li>Mudah beradaptasi</li>
+                    </ul>
+                    </div>
+                    </section>
+
+                    <section>
+                    <div class="about-card" style="max-width: 100%;">
+                    <ul class="skills-list" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                    <li>IT Engineer</li>
+                    <li>Web Developer</li>
+                    <li>Data Base Management System</li>
+                    <li>Data Modeling</li>
+                    <li>IOT Engineer</li>
+                    <li>UI/UX</li>
+                    <li>System Testing</li>
+                    <li>Java, HTML, PHP, Python, C++</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2 class="section-title"><span class="tag-word">Kontak</span> & Hubungi Saya</h2>
+            <p class="contact-desc">
+Siap berkontribusi aktif dalam pengembangan produk, pengelolaan sistem, maupun eksekusi proyek di perusahaan/startup Anda. Satu pesan Anda adalah awal kolaborasi kita            </p>
+
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>0813 9945 5252</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>samuelkamase5@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Semper Barat, Jakarta Utara</span>
+                </div>
+            </div>
+
+            <a href="mailto:samuelkamase5@gmail.com" class="btn btn-primary">Kirim Email</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; Samuel Kamase Rante.</p>
+    </footer>
+
+    <script>
+        // =============================================
+        //  AUTO-SLIDING PHOTO CAROUSEL
+        // =============================================
+        (function () {
+            const slides = document.querySelectorAll('#photoSlideshow .slide');
+            const dotsContainer = document.getElementById('slideDots');
+            const counter = document.getElementById('slideCounter');
+            const total = slides.length;
+            let current = 0;
+            let timer;
+
+            // Buat dot untuk setiap slide
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                slides[current].classList.remove('active');
+                dotsContainer.children[current].classList.remove('active');
+                current = (index + total) % total;
+                slides[current].classList.add('active');
+                dotsContainer.children[current].classList.add('active');
+                counter.textContent = (current + 1) + ' / ' + total;
+            }
+
+            function next() { goTo(current + 1); }
+
+            // Auto-slide setiap 3.5 detik
+            function startTimer() {
+                timer = setInterval(next, 3500);
+            }
+
+            // Pause saat di-hover, lanjut lagi setelah
+            const slideshow = document.getElementById('photoSlideshow');
+            slideshow.addEventListener('mouseenter', () => clearInterval(timer));
+            slideshow.addEventListener('mouseleave', startTimer);
+
+            startTimer();
+        })();
+
+        // =============================================
+        //  ABOUT SLIDESHOW (3 slides)
+        // =============================================
+        (function () {
+            const slides = document.querySelectorAll('#aboutSlideshow .slide');
+            const dotsContainer = document.getElementById('aboutSlideDots');
+            const counter = document.getElementById('aboutSlideCounter');
+            const total = slides.length;
+            let current = 0;
+            let timer;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Foto About ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goTo(index) {
+                slides[current].classList.remove('active');
+                dotsContainer.children[current].classList.remove('active');
+                current = (index + total) % total;
+                slides[current].classList.add('active');
+                dotsContainer.children[current].classList.add('active');
+                counter.textContent = (current + 1) + ' / ' + total;
+            }
+
+            function next() { goTo(current + 1); }
+
+            function startTimer() { timer = setInterval(next, 4000); }
+
+            const slideshow = document.getElementById('aboutSlideshow');
+            slideshow.addEventListener('mouseenter', () => clearInterval(timer));
+            slideshow.addEventListener('mouseleave', startTimer);
+
+            startTimer();
+        })();
+    </script>
+
+</body>
+
+</html>
