@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAMUEL® — Samuel Kamase Rante | IT & Ventures Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            ocean: '#09090B',
+            slateCard: '#141417',
+            slateElevated: '#131C31',
+            cyanGlow: '#34D399',
+            cyanBright: '#6EE7B7',
+          },
+          backgroundImage: {
+            'swiss-grid': 'linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar & Editorial Refinements */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090B;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #34D399;
+    }
+
+    .swiss-grid-bg {
+      background-size: 64px 64px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    }
+
+    .glass-surface {
+      background: rgba(20, 20, 23, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(110, 231, 183, 0.16);
+    }
+
+    .glass-surface-hover {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-surface-hover:hover {
+      border-color: rgba(110, 231, 183, 0.45);
+      box-shadow: 0 20px 40px -15px rgba(52, 211, 153, 0.16);
+      transform: translateY(-4px);
+    }
+
+    /* Hide scrollbar for horizontal photo strip */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Smooth accordion transition */
+    .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.32s ease-out;
+    }
+    .faq-item.active .faq-content {
+      grid-template-rows: 1fr;
+    }
+    .faq-inner {
+      overflow: hidden;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      color: #6EE7B7;
+    }
+  </style>
+</head>
+<body class="bg-ocean text-[#F8FAFC] font-sans antialiased selection:bg-cyanGlow selection:text-ocean overflow-x-hidden">
+
+  <!-- =========================================================
+       1. STICKY MINIMALIST NAVBAR & FULL-SCREEN DRAWER MENU
+  ========================================================== -->
+  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/[0.06] bg-ocean/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <!-- Brand Mark -->
+      <a href="#home" class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white flex items-center gap-1 group">
+        <span>SAMUEL</span><span class="text-cyanBright text-sm align-top group-hover:rotate-12 transition-transform">®</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-slate-400">
+        <a href="#home" class="hover:text-cyanBright transition-colors py-2">Home</a>
+        <a href="#about" class="hover:text-cyanBright transition-colors py-2">About</a>
+        <a href="#skills" class="hover:text-cyanBright transition-colors py-2">Skills</a>
+        <a href="#projects" class="hover:text-cyanBright transition-colors py-2">Projects</a>
+        <a href="#experience" class="hover:text-cyanBright transition-colors py-2">Experience</a>
+        <a href="#contact" class="hover:text-cyanBright transition-colors py-2">Contact</a>
+      </nav>
+
+      <!-- Right Actions: Quick CTA + Hamburger Drawer Trigger -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/62813994555252?text=Halo%20Samuel,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyanGlow/10 border border-cyanBright/30 hover:bg-cyanGlow hover:text-ocean text-cyanBright font-mono text-xs uppercase tracking-wider transition-all">
+          <span>Let's Talk</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <button id="menuOpenBtn" aria-label="Open Navigation Menu" class="p-2.5 rounded-lg border border-white/10 bg-slateCard/80 hover:border-cyanBright/50 text-white transition-all flex items-center gap-2">
+          <span class="hidden lg:inline font-mono text-[11px] uppercase tracking-widest text-slate-300">Menu</span>
+          <i data-lucide="menu" class="w-5 h-5 text-cyanBright"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Full-Screen Slide-Over Drawer Menu -->
+  <div id="drawerMenu" class="fixed inset-0 z-50 bg-[#070809]/98 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between overflow-y-auto">
+    <!-- Drawer Top Bar -->
+    <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between border-b border-white/[0.06]">
+      <span class="font-display font-bold text-xl tracking-tight text-white">SAMUEL<span class="text-cyanBright text-sm align-top">®</span></span>
+      <button id="menuCloseBtn" aria-label="Close Navigation Menu" class="p-2.5 rounded-lg border border-white/15 hover:border-cyanBright text-white hover:text-cyanBright transition-colors flex items-center gap-2">
+        <span class="font-mono text-xs uppercase tracking-widest">Close</span>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Main Grid -->
+    <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center my-auto">
+      <!-- Oversized Interactive Links -->
+      <div class="lg:col-span-7 flex flex-col divide-y divide-white/10 border-y border-white/10">
+        <a href="#home" class="drawer-link group py-4 sm:py-5 flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight text-white hover:text-cyanBright transition-colors">
+          <span>HOME</span>
+          <i data-lucide="plus" class="w-7 h-7 text-slate-500 group-hover:text-cyanBright group-hover:rotate-90 transition-all"></i>
+        </a>
+        <a href="#about" class="drawer-link group py-4 sm:py-5 flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight text-white hover:text-cyanBright transition-colors">
+          <span>ABOUT &amp; IMPACT</span>
+          <i data-lucide="plus" class="w-7 h-7 text-slate-500 group-hover:text-cyanBright group-hover:rotate-90 transition-all"></i>
+        </a>
+        <a href="#skills" class="drawer-link group py-4 sm:py-5 flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight text-white hover:text-cyanBright transition-colors">
+          <span>CORE SKILLS</span>
+          <i data-lucide="plus" class="w-7 h-7 text-slate-500 group-hover:text-cyanBright group-hover:rotate-90 transition-all"></i>
+        </a>
+        <a href="#projects" class="drawer-link group py-4 sm:py-5 flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight text-white hover:text-cyanBright transition-colors">
+          <span>PROJECTS &amp; VENTURES</span>
+          <i data-lucide="plus" class="w-7 h-7 text-slate-500 group-hover:text-cyanBright group-hover:rotate-90 transition-all"></i>
+        </a>
+        <a href="#experience" class="drawer-link group py-4 sm:py-5 flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight text-white hover:text-cyanBright transition-colors">
+          <span>EXPERIENCE</span>
+          <i data-lucide="plus" class="w-7 h-7 text-slate-500 group-hover:text-cyanBright group-hover:rotate-90 transition-all"></i>
+        </a>
+        <a href="#contact" class="drawer-link group py-4 sm:py-5 flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight text-white hover:text-cyanBright transition-colors">
+          <span>CONTACT</span>
+          <i data-lucide="plus" class="w-7 h-7 text-slate-500 group-hover:text-cyanBright group-hover:rotate-90 transition-all"></i>
+        </a>
+      </div>
+
+      <!-- Quick Contact Details -->
+      <div class="lg:col-span-5 glass-surface rounded-2xl p-6 sm:p-8 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyanGlow/10 border border-cyanBright/30 text-cyanBright font-mono text-xs">
+          <span class="w-2 h-2 rounded-full bg-cyanBright animate-pulse"></span>
+          <span>AVAILABLE FOR INTERNSHIPS &amp; COLLABORATION</span>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-400">Location</p>
+            <p class="text-lg font-medium text-white mt-1">Jakarta, Indonesia</p>
+          </div>
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-400">Academic Base</p>
+            <p class="text-lg font-medium text-white mt-1">S1 Teknologi Informasi — Telkom University Jakarta</p>
+          </div>
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-400">Social &amp; Code</p>
+            <div class="flex flex-wrap gap-3 mt-2">
+              <a href="https://github.com/gitsam15" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-cyanGlow/20 border border-white/10 hover:border-cyanBright/40 text-sm text-white transition-all">
+                <i data-lucide="github" class="w-4 h-4 text-cyanBright"></i>
+                <span>github.com/gitsam15</span>
+              </a>
+              <a href="https://instagram.com/samuelkamase" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-cyanGlow/20 border border-white/10 hover:border-cyanBright/40 text-sm text-white transition-all">
+                <i data-lucide="instagram" class="w-4 h-4 text-cyanBright"></i>
+                <span>@samuelkamase</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 border-t border-white/[0.06] flex justify-between items-center text-xs font-mono text-slate-500">
+      <span>©2026 SAMUEL KAMASE RANTE</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       2. EDITORIAL HERO SECTION
+  ========================================================== -->
+  <section id="home" class="relative min-h-screen pt-24 sm:pt-32 pb-16 sm:pb-24 swiss-grid-bg border-b border-white/[0.08] flex items-center overflow-hidden">
+    <!-- Subtle Ambient Mint Radial Glow -->
+    <div class="pointer-events-none absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-cyanGlow/10 blur-[130px]"></div>
+    <div class="pointer-events-none absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-cyanBright/10 blur-[140px]"></div>
+
+    <!-- Giant Faint Watermark Background Text -->
+    <div aria-hidden="true" class="pointer-events-none select-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center overflow-hidden">
+      <span class="font-display font-bold text-[22vw] leading-none tracking-tighter text-white/[0.025] whitespace-nowrap">
+        SAMUEL
+      </span>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        
+        <!-- Left Column: Editorial Statement, Year Stamp, Oversized Name & Role -->
+        <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full glass-surface text-xs font-mono text-cyanBright">
+            <span class="w-2 h-2 rounded-full bg-cyanBright animate-ping"></span>
+            <span>OPEN TO WORK &amp; INTERNSHIP OPPORTUNITIES</span>
+          </div>
+
+          <p class="font-mono text-xs sm:text-sm uppercase tracking-[0.18em] text-slate-300 max-w-xl leading-relaxed border-l-2 border-cyanBright pl-4">
+            BUILDING SCALABLE INFORMATION SYSTEMS, TECH SOLUTIONS &amp; IMPACTFUL VENTURES.
+          </p>
+
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 font-mono text-sm sm:text-base text-cyanBright font-semibold">
+              <span>©2026</span>
+              <span class="h-[1px] w-10 bg-cyanBright/40"></span>
+              <span class="text-slate-400 text-xs uppercase tracking-widest">PORTFOLIO ARCHIVE</span>
+            </div>
+
+            <h1 class="font-display font-bold text-5xl sm:text-7xl xl:text-[5.25rem] leading-[0.95] tracking-tight text-white">
+              SAMUEL<br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-cyanBright">KAMASE RANTE</span>
+            </h1>
+          </div>
+
+          <div class="pt-2 space-y-4">
+            <p class="text-base sm:text-xl font-medium text-slate-200">
+              Undergraduate Information Technology Student — <span class="text-cyanBright">Telkom University Jakarta</span>
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#projects" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-cyanGlow hover:bg-cyanBright text-ocean font-display font-bold text-sm tracking-wide transition-all shadow-lg shadow-cyanGlow/20">
+                <span>Explore Projects &amp; Ventures</span>
+                <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+              </a>
+              <a href="https://www.instagram.com/samuelkamase" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl glass-surface border border-white/10 hover:border-cyanBright/50 text-xs font-mono uppercase tracking-widest text-white transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-cyanBright shrink-0">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                </svg>
+                <span>SOCIAL PROFILE</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Activity Photo Showcase + Floating Quick-Action Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="glass-surface rounded-2xl p-3 sm:p-4 shadow-2xl relative">
+            <!-- Top Frame Meta Bar -->
+            <div class="flex items-center justify-between px-2 pb-3 text-[11px] font-mono text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyanBright"></span>
+                <span id="heroPhotoTag" class="uppercase tracking-wider text-cyanBright">LEADERSHIP &amp; PUBLIC SPEAKING</span>
+              </div>
+              <span id="heroPhotoCounter">01 / 09</span>
+            </div>
+
+            <!-- Main Showcase Image Frame -->
+            <div class="relative aspect-[4/4.4] w-full rounded-xl overflow-hidden bg-zinc-900 border border-white/10 group">
+              <img
+                id="heroShowcaseImg"
+                src="DSC07398.jpg"
+                alt="Samuel Kamase Rante Activity"
+                class="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105"
+              />
+              <!-- Bottom Gradient Overlay & Caption -->
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ocean via-ocean/80 to-transparent p-4 sm:p-5 pt-14">
+                <p id="heroPhotoTitle" class="font-display font-bold text-base sm:text-lg text-white">
+                  Public Speaking &amp; Organizational Forum
+                </p>
+                <p id="heroPhotoDesc" class="text-xs text-slate-300 mt-0.5">
+                  PPGT &amp; Campus Leadership Documentation
+                </p>
+
+                <!-- Carousel Controls -->
+                <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/10">
+                  <div id="heroDots" class="flex items-center gap-1.5"></div>
+                  <div class="flex items-center gap-2">
+                    <button id="prevHeroPhoto" aria-label="Previous Photo" class="p-2 rounded-lg bg-white/10 hover:bg-cyanGlow hover:text-ocean text-white transition-colors">
+                      <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    </button>
+                    <button id="nextHeroPhoto" aria-label="Next Photo" class="p-2 rounded-lg bg-white/10 hover:bg-cyanGlow hover:text-ocean text-white transition-colors">
+                      <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating "Let's Talk" Quick-Action Card (Bottom-Left Corner) -->
+          <a href="#contact" class="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:-left-6 z-20 flex items-center gap-3.5 p-3.5 rounded-xl bg-[#111315]/95 backdrop-blur-xl border border-cyanBright/40 shadow-2xl hover:border-cyanBright transition-all group">
+            <div class="w-11 h-11 rounded-lg overflow-hidden border border-cyanBright/30 shrink-0 bg-slate-800">
+              <img
+                src="WhatsApp Image 2025-07-18 at 17.57.14_8d7ed105.jpg"
+                onerror="this.onerror=null;this.src='https://placehold.co/120x120/141417/6EE7B7?text=SKR';"
+                alt="Samuel Avatar"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="pr-2">
+              <p class="font-mono text-[10px] uppercase tracking-widest text-cyanBright">Let's Talk</p>
+              <p class="font-display font-bold text-sm text-white">Samuel Kamase</p>
+              <p class="text-[11px] text-slate-400">IT Student • Jakarta</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-cyanGlow/15 group-hover:bg-cyanGlow text-cyanBright group-hover:text-ocean flex items-center justify-center transition-colors">
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       3. IMPACT & ABOUT SECTION + HORIZONTAL PHOTO STRIP
+  ========================================================== -->
+  <section id="about" class="py-20 sm:py-28 border-b border-white/[0.08] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Label -->
+      <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cyanBright mb-6">
+        <span class="w-2 h-2 rounded-full bg-cyanBright"></span>
+        <span>01 // ABOUT &amp; MEASURABLE IMPACT</span>
+      </div>
+
+      <!-- Two-Tone Oversized Headline -->
+      <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] max-w-4xl">
+        <span class="text-white">MY IMPACT THROUGH</span>
+        <span class="text-slate-500"> TECHNOLOGY &amp; LEADERSHIP</span>
+      </h2>
+
+      <!-- Bio & KPI Grid -->
+      <div class="mt-10 sm:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <!-- Bio Paragraph -->
+        <div class="lg:col-span-7 glass-surface rounded-2xl p-6 sm:p-8 space-y-5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <span class="font-mono text-xs uppercase tracking-widest text-slate-400">EXECUTIVE SUMMARY</span>
+            <span class="px-2.5 py-1 rounded bg-cyanGlow/10 text-cyanBright font-mono text-xs">Semester 5 • S1 IT</span>
+          </div>
+          <p class="text-slate-200 text-base sm:text-lg leading-relaxed">
+            Mahasiswa Semester 5 Teknologi Informasi di <strong class="text-white font-semibold">Telkom University Jakarta</strong> yang berfokus pada pengembangan sistem informasi, rekayasa perangkat lunak, serta memiliki jiwa kewirausahaan (<em class="text-cyanBright not-italic">entrepreneurship</em>). Berpengalaman aktif dalam dunia organisasi, kepanitiaan, perlombaan, hingga mengelola bisnis F&amp;B berskala acara kampus, dengan antusiasme tinggi untuk berkolaborasi dalam tim dan memecahkan masalah secara kreatif.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-slate-300">Information Systems</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-slate-300">Web Development &amp; UI/UX</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-slate-300">IoT Systems</span>
+            <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-slate-300">F&amp;B Entrepreneurship</span>
+          </div>
+        </div>
+
+        <!-- Animated KPI Counters -->
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
+          <div class="glass-surface glass-surface-hover rounded-2xl p-6 flex items-center justify-between">
+            <div>
+              <p class="font-display font-bold text-4xl sm:text-5xl text-white">
+                <span class="kpi-counter" data-target="5" data-suffix="+">0+</span>
+              </p>
+              <p class="font-mono text-xs uppercase tracking-wider text-cyanBright mt-1">IT Projects &amp; Ventures</p>
+              <p class="text-xs text-slate-400 mt-1">Full-stack web, UI/UX, IoT &amp; campus ventures</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-cyanGlow/10 border border-cyanBright/30 flex items-center justify-center text-cyanBright shrink-0">
+              <i data-lucide="layers" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <div class="glass-surface glass-surface-hover rounded-2xl p-6 flex items-center justify-between">
+            <div>
+              <p class="font-display font-bold text-4xl sm:text-5xl text-white">
+                <span class="kpi-counter" data-prefix="±" data-target="300">±0</span>
+              </p>
+              <p class="font-mono text-xs uppercase tracking-wider text-cyanBright mt-1">SnackByte Portions Sold</p>
+              <p class="text-xs text-slate-400 mt-1">Achieved in 1 day at Telkom University Market Day</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-cyanGlow/10 border border-cyanBright/30 flex items-center justify-center text-cyanBright shrink-0">
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+          </div>
+
+          <div class="glass-surface glass-surface-hover rounded-2xl p-6 flex items-center justify-between">
+            <div>
+              <p class="font-display font-bold text-4xl sm:text-5xl text-white">
+                <span class="kpi-counter" data-target="3" data-suffix="+">0+</span>
+              </p>
+              <p class="font-mono text-xs uppercase tracking-wider text-cyanBright mt-1">Campus &amp; Sports Awards</p>
+              <p class="text-xs text-slate-400 mt-1">Academic recognition, Badminton &amp; Basketball podiums</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-cyanGlow/10 border border-cyanBright/30 flex items-center justify-center text-cyanBright shrink-0">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horizontal Interactive Photo Strip (Click to Open Lightbox) -->
+      <div class="mt-14 sm:mt-16">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-slate-400">
+            <i data-lucide="camera" class="w-4 h-4 text-cyanBright"></i>
+            <span>PERSONAL, ORGANIZATIONAL &amp; ACHIEVEMENT GALLERY (CLICK TO EXPAND)</span>
+          </div>
+          <div class="hidden sm:flex items-center gap-2">
+            <button id="stripLeftBtn" aria-label="Scroll Gallery Left" class="p-2 rounded-lg glass-surface hover:border-cyanBright text-slate-300 hover:text-cyanBright transition-colors">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
+            <button id="stripRightBtn" aria-label="Scroll Gallery Right" class="p-2 rounded-lg glass-surface hover:border-cyanBright text-slate-300 hover:text-cyanBright transition-colors">
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="photoStrip" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory">
+          <!-- Populated dynamically via JS for clean fallback & lightbox binding -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4. NUMBERED CORE COMPETENCIES & SKILLS (01, 02, 03)
+  ========================================================== -->
+  <section id="skills" class="py-20 sm:py-28 swiss-grid-bg border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cyanBright mb-4">
+            <span class="w-2 h-2 rounded-full bg-cyanBright"></span>
+            <span>02 // CAPABILITIES &amp; TECH STACK</span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05]">
+            <span class="text-white">CORE</span>
+            <span class="text-slate-500"> COMPETENCIES</span>
+          </h2>
+        </div>
+        <p class="text-sm text-slate-400 max-w-md font-mono">
+          Kombinasi keahlian rekayasa perangkat lunak, analisis sistem, IoT, produktivitas perkantoran, serta eksekusi bisnis &amp; kepemimpinan.
+        </p>
+      </div>
+
+      <!-- Swiss Numbered Rows -->
+      <div class="divide-y divide-white/10 border-y border-white/10">
+        
+        <!-- Row 01 -->
+        <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start group hover:bg-white/[0.015] px-2 sm:px-4 transition-colors">
+          <div class="lg:col-span-2 flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyanBright"></span>
+            <span class="font-mono text-sm sm:text-base font-semibold text-cyanBright">01</span>
+          </div>
+          <div class="lg:col-span-5">
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-cyanBright transition-colors">
+              SYSTEM ANALYSIS &amp; SOFTWARE DEVELOPMENT
+            </h3>
+            <p class="text-sm text-slate-400 mt-2">
+              Perancangan arsitektur sistem informasi end-to-end, pemodelan basis data relasional, hingga pengembangan aplikasi web dan berorientasi objek.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">SDLC</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">ERD, DFD &amp; UML</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Relational Database Design</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">HTML5 &amp; CSS3</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Bootstrap 5</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">PHP &amp; AJAX</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">Java (OOP)</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Git &amp; GitHub</span>
+          </div>
+        </div>
+
+        <!-- Row 02 -->
+        <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start group hover:bg-white/[0.015] px-2 sm:px-4 transition-colors">
+          <div class="lg:col-span-2 flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyanBright"></span>
+            <span class="font-mono text-sm sm:text-base font-semibold text-cyanBright">02</span>
+          </div>
+          <div class="lg:col-span-5">
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-cyanBright transition-colors">
+              IOT, DATA &amp; NETWORK SECURITY
+            </h3>
+            <p class="text-sm text-slate-400 mt-2">
+              Integrasi perangkat keras mikrokontroler berbasis sensor cerdas serta evaluasi model machine learning untuk deteksi intrusi jaringan.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">ESP32 Microcontroller</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Inductive Proximity Sensors</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Blynk IoT Integration</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">Machine Learning (NIDS)</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Network Traffic Analysis</span>
+          </div>
+        </div>
+
+        <!-- Row 03 -->
+        <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start group hover:bg-white/[0.015] px-2 sm:px-4 transition-colors">
+          <div class="lg:col-span-2 flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyanBright"></span>
+            <span class="font-mono text-sm sm:text-base font-semibold text-cyanBright">03</span>
+          </div>
+          <div class="lg:col-span-5">
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-cyanBright transition-colors">
+              OFFICE PRODUCTIVITY, ENTREPRENEURSHIP &amp; LEADERSHIP
+            </h3>
+            <p class="text-sm text-slate-400 mt-2">
+              Pengolahan dokumen, data spreadsheet &amp; presentasi bisnis menggunakan perangkat perkantoran, manajemen operasional event, serta kepemimpinan organisasi.
+            </p>
+          </div>
+          <div class="lg:col-span-5 flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">Microsoft Word</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">Microsoft Excel</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Microsoft PowerPoint</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-cyanBright border-cyanBright/30">Business Operations</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Event Management</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Public Speaking (MC)</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Leadership</span>
+            <span class="px-3 py-1.5 rounded-lg glass-surface text-xs font-mono text-slate-200">Teamwork</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       5. PROJECTS & VENTURES SECTION (ASYMMETRIC EDITORIAL GRID)
+  ========================================================== -->
+  <section id="projects" class="py-20 sm:py-28 border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header & Category Filter Pills -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cyanBright mb-4">
+            <span class="w-2 h-2 rounded-full bg-cyanBright"></span>
+            <span>03 // SELECTED WORKS &amp; VENTURES</span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05]">
+            <span class="text-white">PROJECTS</span>
+            <span class="text-slate-500"> &amp; VENTURES.</span>
+          </h2>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="inline-flex flex-wrap gap-2 p-1.5 rounded-xl glass-surface self-start">
+          <button data-filter="all" class="filter-btn active px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider bg-cyanGlow text-ocean font-bold transition-all">
+            All (3)
+          </button>
+          <button data-filter="tech" class="filter-btn px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all">
+            Tech &amp; Systems (2)
+          </button>
+          <button data-filter="entrepreneurship" class="filter-btn px-4 py-2 rounded-lg font-mono text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-all">
+            Entrepreneurship (1)
+          </button>
+        </div>
+      </div>
+
+      <!-- Asymmetric 2-Column Editorial Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+        
+        <!-- FEATURED HIGHLIGHT CARD (Full Width / 12 Cols): SNACKBYTE -->
+        <article data-category="entrepreneurship" data-project="snackbyte" class="project-card lg:col-span-12 glass-surface glass-surface-hover rounded-2xl overflow-hidden cursor-pointer group">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <!-- Left Content -->
+            <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <span class="px-3 py-1 rounded-full bg-cyanGlow/15 border border-cyanBright/40 text-cyanBright font-mono text-xs font-semibold">
+                    ★ FEATURED VENTURE
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 font-mono text-xs font-semibold">
+                    ±300 Porsi Terjual dalam 1 Hari
+                  </span>
+                </div>
+
+                <h3 class="font-display font-bold text-2xl sm:text-4xl text-white group-hover:text-cyanBright transition-colors leading-tight">
+                  SnackByte — F&amp;B Entrepreneurship Venture (Market Day Telkom University Jakarta)
+                </h3>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Merintis dan mengelola bisnis kuliner bertema <span class="text-white font-medium">gaming/tech</span> untuk mata kuliah Kewirausahaan. Berhasil mencatatkan penjualan <strong class="text-cyanBright">±300 porsi dalam satu hari</strong> selama acara Market Day di Telkom University Jakarta melalui manajemen operasional dapur yang efisien, sistem kasir/POS yang tertata, serta strategi booth branding yang menarik.
+                </p>
+
+                <!-- Signature Menu Tags -->
+                <div class="pt-1">
+                  <p class="font-mono text-[11px] uppercase tracking-widest text-slate-400 mb-2">Signature Menu Lineup:</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Tahu Walik Original</span>
+                    <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Tahu Walik Chilli Oil</span>
+                    <span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Es Soda Gembira</span>
+                    <span class="px-3 py-1 rounded-md bg-cyanGlow/10 border border-cyanBright/30 text-xs font-mono text-cyanBright">Paket Bundle</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
+                  <span>ROLE: FOUNDER &amp; OPERATIONS</span>
+                  <span>•</span>
+                  <span>TELKOM UNIVERSITY JAKARTA</span>
+                </div>
+                <span class="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-cyanBright group-hover:translate-x-1 transition-transform">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Right Booth Visual Slot -->
+            <div class="lg:col-span-5 relative min-h-[280px] sm:min-h-[340px] bg-zinc-900 border-t lg:border-t-0 lg:border-l border-white/10 overflow-hidden group" id="snackbyte-slider">
+              <!-- Slide 1: Booth & Branding -->
+              <img
+                src="boothsb5.jpeg"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x700/141417/6EE7B7?text=SnackByte+Booth'"
+                alt="SnackByte Booth & Branding"
+                class="sb-slide absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 opacity-100 group-hover:scale-105"
+              />
+              <!-- Slide 2: Kitchen & Crowd -->
+              <img
+                src="boothsb2.jpeg"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x700/141417/6EE7B7?text=SnackByte+Kitchen'"
+                alt="SnackByte Kitchen & Crowd"
+                class="sb-slide absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 opacity-0 group-hover:scale-105"
+              />
+              <img
+                src="boothsb.jpeg"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x700/141417/6EE7B7?text=SnackByte+Crowd'"
+                alt="SnackByte Crowd"
+                class="sb-slide absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 opacity-0 group-hover:scale-105"
+              />
+              <img
+                src="boothsb4.jpeg"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x700/141417/6EE7B7?text=SnackByte+POS'"
+                alt="SnackByte POS"
+                class="sb-slide absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 opacity-0 group-hover:scale-105"
+              />
+              <img
+                src="boothsb3.jpeg"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x700/141417/6EE7B7?text=SnackByte+Menu'"
+                alt="SnackByte Menu Banner"
+                class="sb-slide absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 opacity-0 group-hover:scale-105"
+              />
+
+              <!-- Top Right Slide Controls -->
+              <div class="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5" onclick="event.stopPropagation()">
+                <button type="button" onclick="changeSbSlide(-1)" aria-label="Previous photo" class="w-8 h-8 rounded-lg glass-surface border border-white/15 flex items-center justify-center text-white hover:border-cyanBright hover:text-cyanBright transition-colors">
+                  <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                </button>
+                <button type="button" onclick="changeSbSlide(1)" aria-label="Next photo" class="w-8 h-8 rounded-lg glass-surface border border-white/15 flex items-center justify-center text-white hover:border-cyanBright hover:text-cyanBright transition-colors">
+                  <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <!-- Bottom Caption Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-ocean/90 via-ocean/20 to-transparent flex items-end p-5 pointer-events-none">
+                <div class="glass-surface rounded-xl p-3.5 w-full flex items-center justify-between gap-3">
+                  <div>
+                    <p id="sb-slide-tag" class="font-mono text-[10px] uppercase tracking-widest text-cyanBright">01 / 05 • BOOTH &amp; POS</p>
+                    <p id="sb-slide-caption" class="text-xs sm:text-sm font-semibold text-white">Team Setup, Menu Banner &amp; POS</p>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0">
+                    <span class="sb-dot w-2 h-2 rounded-full bg-cyanBright transition-all"></span>
+                    <span class="sb-dot w-2 h-2 rounded-full bg-white/30 transition-all"></span>
+                    <span class="sb-dot w-2 h-2 rounded-full bg-white/30 transition-all"></span>
+                    <span class="sb-dot w-2 h-2 rounded-full bg-white/30 transition-all"></span>
+                    <span class="sb-dot w-2 h-2 rounded-full bg-white/30 transition-all"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            let sbCurrent = 0;
+            const sbCaptions = [
+              { tag: '01 / 05 • BOOTH & POS', text: 'Team Setup, Menu Banner & POS' },
+              { tag: '02 / 05 • LIVE OPERATIONS', text: 'Kitchen Flow & Customer Crowd' },
+              { tag: '03 / 05 • THE TEAM', text: 'Our Team Lineup' },
+              { tag: '04 / 05 • FRESH SERVE PRODUCT', text: 'Order Management & Fast Serving' },
+              { tag: '05 / 05 • CUSTOMER CROWD', text: 'High Demand During Market Day' }
+            ];
+
+            function changeSbSlide(step) {
+              const slides = document.querySelectorAll('.sb-slide');
+              const dots = document.querySelectorAll('.sb-dot');
+              if (!slides.length) return;
+
+              slides[sbCurrent].classList.replace('opacity-100', 'opacity-0');
+              dots[sbCurrent].classList.replace('bg-cyanBright', 'bg-white/30');
+
+              sbCurrent = (sbCurrent + step + slides.length) % slides.length;
+
+              slides[sbCurrent].classList.replace('opacity-0', 'opacity-100');
+              dots[sbCurrent].classList.replace('bg-white/30', 'bg-cyanBright');
+
+              document.getElementById('sb-slide-tag').textContent = sbCaptions[sbCurrent].tag;
+              document.getElementById('sb-slide-caption').textContent = sbCaptions[sbCurrent].text;
+            }
+          </script>
+        </article>
+
+        <!-- CARD 2 (7 Cols): METALIX SMARTBIN -->
+        <article data-category="tech" data-project="metalix" class="project-card lg:col-span-7 glass-surface glass-surface-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between cursor-pointer group">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3 py-1 rounded-full bg-cyanGlow/10 border border-cyanBright/30 text-cyanBright font-mono text-xs">
+                IoT &amp; EMBEDDED SYSTEMS
+              </span>
+              <span class="font-mono text-xs text-slate-400">02 / TECH</span>
+            </div>
+
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-cyanBright transition-colors">
+              Metalix Smartbin (IoT Smart Waste Management)
+            </h3>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Sistem tempat sampah pintar berbasis mikrokontroler <strong class="text-white">ESP32</strong> yang dilengkapi sensor induktif <strong class="text-white">LJ12A3</strong> untuk mendeteksi dan memilah sampah logam secara otomatis, indikator status pada layar OLED, serta pemantauan kapasitas <em class="text-cyanBright not-italic">real-time</em> melalui aplikasi Blynk.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">ESP32</span>
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">LJ12A3 Sensor</span>
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">OLED Display</span>
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">Blynk IoT</span>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-mono text-cyanBright group-hover:translate-x-1 transition-transform">
+              <span>Details</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- CARD 3 (5 Cols): WEB DEVELOPMENT & UI/UX SHOWCASE -->
+        <article data-category="tech" data-project="webdev" class="project-card lg:col-span-5 glass-surface glass-surface-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between cursor-pointer group">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3 py-1 rounded-full bg-cyanGlow/10 border border-cyanBright/30 text-cyanBright font-mono text-xs">
+                WEB DEVELOPMENT &amp; UI/UX
+              </span>
+              <span class="font-mono text-xs text-slate-400">03 / WEB</span>
+            </div>
+
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-cyanBright transition-colors">
+              Full-Stack &amp; Front-End Web Applications
+            </h3>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Perancangan antarmuka modern dan pengembangan berbagai platform web fungsional—mulai dari <strong class="text-white">SnackByte Online Shop</strong>, sistem reservasi tiket berbasis peran <strong class="text-white">PT. Jugijakgijuk</strong>, portal data asinkron <strong class="text-white">AJAX/PHP</strong>, hingga arsitektur <strong class="text-white">Personal Portfolio</strong> ini.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">HTML/CSS/JS</span>
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">Tailwind &amp; Bootstrap</span>
+              <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-xs text-slate-300">PHP &amp; AJAX</span>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-mono text-cyanBright group-hover:translate-x-1 transition-transform">
+              <span>Details</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6. ORGANIZATIONAL EXPERIENCE & ACHIEVEMENTS GRID
+  ========================================================== -->
+  <section id="experience" class="py-20 sm:py-28 bg-[#060708] border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cyanBright mb-4">
+            <span class="w-2 h-2 rounded-full bg-cyanBright"></span>
+            <span>04 // LEADERSHIP &amp; TRACK RECORD</span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05]">
+            <span class="text-white">EXPERIENCE</span>
+            <span class="text-slate-500"> &amp; HONORS</span>
+          </h2>
+        </div>
+        <p class="text-sm text-slate-400 max-w-md font-mono">
+          Rekam jejak kepemimpinan organisasi pemuda, manajemen acara sekolah/kampus, serta pencapaian kompetisi.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Card 1: PPGT -->
+        <div class="glass-surface glass-surface-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-11 h-11 rounded-xl bg-cyanGlow/10 border border-cyanBright/30 flex items-center justify-center text-cyanBright">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-xs text-slate-400">ORGANIZATION</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                PPGT (Persekutuan Pemuda Gereja Toraja)
+              </h3>
+              <p class="font-mono text-xs text-cyanBright mt-1">Kepengurusan &amp; Kepemudaan</p>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Aktif dalam kepengurusan dan berbagai forum kepemudaan, mengasah kemampuan kepemimpinan kolaboratif, manajemen program acara, serta komunikasi lintas tim.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-[11px] text-slate-300">Leadership</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-[11px] text-slate-300">Event Coordination</span>
+          </div>
+        </div>
+
+        <!-- Card 2: SMAN 52 Jakarta -->
+        <div class="glass-surface glass-surface-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-11 h-11 rounded-xl bg-cyanGlow/10 border border-cyanBright/30 flex items-center justify-center text-cyanBright">
+                <i data-lucide="mic" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-xs text-slate-400">EVENT &amp; STAGE</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                SMAN 52 Jakarta
+              </h3>
+              <p class="font-mono text-xs text-cyanBright mt-1">Ketua Pelaksana &amp; Master of Ceremony (MC)</p>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Dipercaya memimpin kepanitiaan sebagai Ketua Pelaksana sekaligus tampil sebagai Master of Ceremony (MC) pada berbagai acara sekolah dan festival projek pelajar.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-[11px] text-slate-300">Ketua Pelaksana</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-[11px] text-slate-300">Public Speaking (MC)</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Prestasi Akademik & Kompetisi -->
+        <div class="glass-surface glass-surface-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-11 h-11 rounded-xl bg-cyanGlow/10 border border-cyanBright/30 flex items-center justify-center text-cyanBright">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-xs text-slate-400">ACHIEVEMENTS</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">
+                Prestasi Akademik &amp; Kompetisi
+              </h3>
+              <p class="font-mono text-xs text-cyanBright mt-1">Campus &amp; Sports Recognition</p>
+            </div>
+            <ul class="text-sm text-slate-300 space-y-2.5">
+              <li class="flex items-start gap-2">
+                <span class="text-cyanBright mt-1">▹</span>
+                <span>Penghargaan Tahap / Kegiatan Kampus <strong class="text-white">Telkom University</strong></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-cyanBright mt-1">▹</span>
+                <span><strong class="text-white">Juara 3 Badminton</strong> — PB. Berklasik Fun Tour</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-cyanBright mt-1">▹</span>
+                <span><strong class="text-white">Juara 3 Basket Putra</strong> — SMAN 52 Jakarta</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-[11px] text-slate-300">Competitive Mindset</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 font-mono text-[11px] text-slate-300">Team Spirit</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7. CAREER FAQ ACCORDION (FOR RECRUITERS & INTERNSHIPS)
+  ========================================================== -->
+  <section class="py-20 sm:py-28 swiss-grid-bg border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <!-- Left Title -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cyanBright">
+            <span class="w-2 h-2 rounded-full bg-cyanBright"></span>
+            <span>05 // RECRUITER BRIEF</span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl tracking-tight leading-[1.05]">
+            <span class="text-white">FREQUENT</span><br />
+            <span class="text-slate-500">QUESTIONS</span>
+          </h2>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Ringkasan cepat mengenai fokus karier, keahlian teknis, pengalaman kewirausahaan, serta kesiapan kolaborasi profesional.
+          </p>
+        </div>
+
+        <!-- Right Interactive Accordion -->
+        <div class="lg:col-span-7 space-y-3" id="faqContainer">
+          <!-- FAQ 1 -->
+          <div class="faq-item active glass-surface rounded-xl overflow-hidden">
+            <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4">
+              <span class="font-display font-bold text-base sm:text-lg text-white">
+                1. Peran magang (internship) atau posisi kerja apa yang sedang diminati?
+              </span>
+              <i data-lucide="plus" class="faq-icon w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+                Saya tertarik pada peran di bidang <strong class="text-white">System Analyst, Software / Web Developer, UI/UX Designer, IT Operations, IoT Engineer,</strong> maupun <strong class="text-white">Product / Business Operations</strong> di perusahaan teknologi maupun startup yang dinamis.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item glass-surface rounded-xl overflow-hidden">
+            <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4">
+              <span class="font-display font-bold text-base sm:text-lg text-white">
+                2. Apa tech stack dan keahlian teknis utama yang dikuasai?
+              </span>
+              <i data-lucide="plus" class="faq-icon w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+                Saya menguasai analisis &amp; perancangan sistem (SDLC, ERD, DFD, UML), desain database relasional, pengembangan web (<strong class="text-white">HTML5, CSS3, Tailwind CSS, Bootstrap, PHP, AJAX</strong>), <strong class="text-white">Java (OOP)</strong>, kontrol versi <strong class="text-white">Git/GitHub</strong>, pengembangan IoT berbasis <strong class="text-white">ESP32</strong>, serta perangkat produktivitas perkantoran (<strong class="text-white">Microsoft Word, Excel, PowerPoint</strong>).
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item glass-surface rounded-xl overflow-hidden">
+            <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4">
+              <span class="font-display font-bold text-base sm:text-lg text-white">
+                3. Bagaimana pengalaman kepemimpinan dan bisnis SnackByte membentuk cara kerja saya?
+              </span>
+              <i data-lucide="plus" class="faq-icon w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+                Mengelola bisnis kuliner <strong class="text-cyanBright">SnackByte</strong> hingga menembus penjualan <strong class="text-white">±300 porsi dalam satu hari</strong> di Market Day Telkom University Jakarta—ditambah peran sebagai Ketua Pelaksana dan MC—melatih saya untuk mengambil keputusan cepat di bawah tekanan, menjaga koordinasi tim tetap solid, dan berorientasi pada hasil nyata.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item glass-surface rounded-xl overflow-hidden">
+            <button class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4">
+              <span class="font-display font-bold text-base sm:text-lg text-white">
+                4. Apakah tersedia untuk kolaborasi proyek atau jadwal magang saat ini?
+              </span>
+              <i data-lucide="plus" class="faq-icon w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3">
+                Ya, sangat terbuka! Sebagai mahasiswa Semester 5 S1 Teknologi Informasi di Telkom University Jakarta, saya siap berdiskusi mengenai peluang magang, proyek pengembangan sistem, maupun kolaborasi startup. Silakan hubungi saya melalui formulir kontak di bawah.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       8. SPLIT CONTACT SECTION & GIANT EDITORIAL FOOTER
+  ========================================================== -->
+  <footer id="contact" class="pt-20 sm:pt-28 pb-10 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Split Contact Card -->
+      <div class="glass-surface rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 border border-cyanBright/25 shadow-2xl">
+        
+        <!-- Left: Interactive "Reach Out to Me" Form (Integrated with Formspree) -->
+        <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 bg-[#0E1012]">
+          <div class="space-y-2 mb-6">
+            <span class="font-mono text-xs uppercase tracking-widest text-cyanBright">DIRECT MESSAGE</span>
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">Reach Out to Me</h3>
+            <p class="text-xs sm:text-sm text-slate-400">Kirim pesan langsung untuk diskusi magang, proyek IT, atau kolaborasi.</p>
+          </div>
+
+          <form id="contactForm" class="space-y-4">
+            <div>
+              <label for="senderName" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-1.5">Nama</label>
+              <input
+                type="text"
+                id="senderName"
+                name="name"
+                required
+                placeholder="Nama Anda / Perusahaan"
+                class="w-full px-4 py-3 rounded-xl bg-ocean/90 border border-white/10 focus:border-cyanBright focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="senderEmail" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-1.5">Email</label>
+              <input
+                type="email"
+                id="senderEmail"
+                name="email"
+                required
+                placeholder="nama@perusahaan.com"
+                class="w-full px-4 py-3 rounded-xl bg-ocean/90 border border-white/10 focus:border-cyanBright focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="senderMessage" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-1.5">Pesan</label>
+              <textarea
+                id="senderMessage"
+                name="message"
+                rows="3"
+                required
+                placeholder="Tuliskan detail peluang atau pesan Anda..."
+                class="w-full px-4 py-3 rounded-xl bg-ocean/90 border border-white/10 focus:border-cyanBright focus:outline-none text-sm text-white placeholder-slate-500 transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              id="submitContactBtn"
+              class="w-full py-3.5 px-6 rounded-xl bg-cyanGlow hover:bg-cyanBright text-ocean font-display font-bold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyanGlow/20"
+            >
+              <span>Kirim Pesan</span>
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Bold CTA Banner "LET'S CREATE TOGETHER" -->
+        <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 relative flex flex-col justify-between bg-gradient-to-br from-[#0F1F1B] via-[#0B1413] to-ocean border-t lg:border-t-0 lg:border-l border-white/10">
+          <div class="pointer-events-none absolute -right-16 -top-16 w-72 h-72 rounded-full bg-cyanGlow/15 blur-3xl"></div>
+
+          <div class="space-y-5 relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyanGlow/15 border border-cyanBright/30 text-cyanBright font-mono text-xs">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>READY TO CONTRIBUTE</span>
+            </div>
+
+            <h2 class="font-display font-bold text-4xl sm:text-5xl xl:text-6xl tracking-tight leading-[0.98] text-white">
+              LET'S CREATE <span class="text-cyanBright">TOGETHER</span>
+            </h2>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-md">
+              Siap menghadirkan solusi sistem informasi yang terstruktur, eksekusi proyek yang gesit, dan energi kepemimpinan positif ke dalam tim Anda.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10 space-y-4 relative z-10">
+            <div class="flex items-center gap-3 text-sm text-slate-200">
+              <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyanBright">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <p class="font-mono text-[10px] uppercase tracking-widest text-slate-400">Domisili</p>
+                <p class="font-medium">Jakarta, Indonesia</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="https://github.com/gitsam15" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-cyanGlow hover:text-ocean border border-white/10 text-xs font-mono uppercase tracking-wider text-white transition-all">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>github.com/gitsam15</span>
+              </a>
+              <a href="https://instagram.com/samuelkamase" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-cyanGlow hover:text-ocean border border-white/10 text-xs font-mono uppercase tracking-wider text-white transition-all">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                <span>@samuelkamase</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Navigation Links -->
+      <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-xs font-mono text-slate-400">
+        <div class="flex flex-wrap gap-6">
+          <p>©2026 Samuel Kamase Rante. All rights reserved.</p>
+        </div>
+      </div>
+
+      <!-- Giant Bottom Editorial Display Signature -->
+      <div class="mt-8 select-none overflow-hidden text-center">
+        <p class="font-display font-bold text-[19vw] lg:text-[13.5rem] leading-[0.85] tracking-tighter text-white">
+          Samuel<span class="text-cyanBright text-[8vw] lg:text-6xl align-top">®</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       MODALS & TOAST NOTIFICATION
+  ========================================================== -->
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-surface rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border border-cyanBright/30 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button id="closeProjectModal" aria-label="Close Modal" class="absolute top-5 right-5 p-2 rounded-lg bg-white/5 hover:bg-cyanGlow hover:text-ocean text-slate-300 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="modalBody" class="space-y-5">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo Lightbox Modal -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-lg">
+    <div class="max-w-4xl w-full relative">
+      <button id="closeLightboxBtn" aria-label="Close Lightbox" class="absolute -top-12 right-0 p-2 rounded-lg bg-white/10 hover:bg-cyanGlow hover:text-ocean text-white transition-colors flex items-center gap-2 font-mono text-xs">
+        <span>CLOSE</span>
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div class="glass-surface rounded-2xl overflow-hidden p-3">
+        <img id="lightboxImg" src="" alt="Preview" class="w-full max-h-[75vh] object-contain rounded-xl bg-zinc-950" />
+        <div class="pt-3 px-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <p id="lightboxTitle" class="font-display font-bold text-lg text-white"></p>
+            <p id="lightboxDesc" class="text-xs text-slate-400"></p>
+          </div>
+          <span id="lightboxTag" class="px-3 py-1 rounded-full bg-cyanGlow/15 text-cyanBright font-mono text-xs self-start"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instant Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-surface border border-cyanBright/50 rounded-xl px-5 py-4 shadow-2xl flex items-center gap-3.5 max-w-sm">
+      <div class="w-9 h-9 rounded-lg bg-cyanGlow/20 text-cyanBright flex items-center justify-center shrink-0">
+        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <p id="toastTitle" class="font-display font-bold text-sm text-white">Pesan Terkirim!</p>
+        <p id="toastMessage" class="text-xs text-slate-300 mt-0.5">Terima kasih telah menghubungi Samuel Kamase Rante.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       INTERACTIVE JAVASCRIPT & MOTION.DEV ANIMATIONS
+  ========================================================== -->
+  <script type="module">
+    import { animate, stagger, inView, scroll } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // -------------------------------------------------------
+      // 0. MOTION.DEV DYNAMIC CHOREOGRAPHY
+      // -------------------------------------------------------
+      // A. Top Mint Scroll Progress Bar
+      const progressBar = document.createElement('div');
+      progressBar.className = 'fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-cyanGlow via-cyanBright to-emerald-200 origin-left z-50 pointer-events-none';
+      progressBar.style.transform = 'scaleX(0)';
+      document.body.appendChild(progressBar);
+
+      scroll(animate(progressBar, { scaleX: [0, 1] }, { ease: "linear" }));
+
+      // B. Hero Section Staggered Entrance
+      const heroLeftItems = document.querySelectorAll('#home .lg\\:col-span-7 > *');
+      animate(
+        heroLeftItems,
+        { opacity: [0, 1], y: [28, 0] },
+        { delay: stagger(0.09), duration: 0.75, easing: [0.16, 1, 0.3, 1] }
+      );
+
+      const heroRightCard = document.querySelector('#home .lg\\:col-span-5');
+      if (heroRightCard) {
+        animate(
+          heroRightCard,
+          { opacity: [0, 1], y: [36, 0], scale: [0.96, 1] },
+          { delay: 0.25, duration: 0.85, easing: [0.16, 1, 0.3, 1] }
+        );
+      }
+
+      // C. Hero Watermark Subtle Scroll Parallax
+      const heroWatermark = document.querySelector('#home span.text-\\[22vw\\]');
+      if (heroWatermark) {
+        scroll(
+          animate(heroWatermark, { x: [-40, 60] }, { ease: "linear" }),
+          { target: document.getElementById('home'), offset: ["start start", "end start"] }
+        );
+      }
+
+      // D. Scroll-Triggered Reveals for Sections, Cards & Rows
+      const revealGroups = [
+        '#about h2, #about .lg\\:col-span-7',
+        '#about .lg\\:col-span-5 > div',
+        '#skills .divide-y > div',
+        '#projects .project-card',
+        '#experience .grid > div',
+        '#faqContainer .faq-item',
+        '#contact .glass-surface.rounded-3xl'
+      ];
+
+      revealGroups.forEach((selector) => {
+        const elements = document.querySelectorAll(selector);
+        if (!elements.length) return;
+
+        elements.forEach((el) => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(26px)';
+        });
+
+        inView(
+          elements[0].parentElement || elements[0],
+          () => {
+            animate(
+              elements,
+              { opacity: [0, 1], y: [26, 0] },
+              { delay: stagger(0.08), duration: 0.65, easing: [0.16, 1, 0.3, 1] }
+            );
+          },
+          { amount: 0.15 }
+        );
+      });
+
+      // E. Giant Footer Signature Reveal
+      const footerSig = document.querySelector('footer p.text-\\[19vw\\]');
+      if (footerSig) {
+        footerSig.style.opacity = '0';
+        inView(footerSig, () => {
+          animate(
+            footerSig,
+            { opacity: [0, 1], y: [45, 0] },
+            { duration: 0.9, easing: [0.16, 1, 0.3, 1] }
+          );
+        }, { amount: 0.2 });
+      }
+
+      // -------------------------------------------------------
+      // 1. ACTIVITY PHOTOS DATA (WITH GRACEFUL PLACEHOLDER FALLBACK)
+      // -------------------------------------------------------
+      const activityPhotos = [
+        {
+          src: 'DSC07398.jpg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Public+Speaking+Forum',
+          tag: 'LEADERSHIP & SPEAKING',
+          title: 'Public Speaking & Organizational Forum',
+          desc: 'Penyampaian materi dan koordinasi forum kepemudaan.'
+        },
+        {
+          src: 'DSC00880.jpg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Organizational+Meeting',
+          tag: 'TEAM COORDINATION',
+          title: 'Rapat Kerja & Diskusi Program',
+          desc: 'Perencanaan strategis bersama tim pengurus.'
+        },
+        {
+          src: 'self1.JPG',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Samuel+Kamase+Rante',
+          tag: 'SPEAKER & LEADERSHIP',
+          title: 'Sharing Session & Leadership Talk',
+          desc: 'Latihan Kepemimpinan Pemuda Dasar (LKPD) PPGT.'
+        },
+        {
+          src: 'ketua pelaksana.jpeg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Ketua+Pelaksana+SMAN+52',
+          tag: 'EVENT LEADERSHIP',
+          title: 'Sambutan Ketua Pelaksana — SMAN 52 Jakarta',
+          desc: 'Memimpin jalannya kepanitiaan acara sekolah.'
+        },
+        {
+          src: 'mc.jpeg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Master+of+Ceremony+Festival',
+          tag: 'PUBLIC SPEAKING',
+          title: 'Master of Ceremony (MC) — Festival Projek',
+          desc: 'Memandu rangkaian pembukaan acara festival.'
+        },
+        {
+          src: 'DSC07884.jpg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=PPGT+Youth+Event',
+          tag: 'YOUTH ORGANIZATION',
+          title: 'Kegiatan Kepemudaan PPGT',
+          desc: 'Kontribusi aktif dalam pelayanan dan komunitas pemuda.'
+        },
+        {
+          src: 'piala telu.jpeg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Telkom+University+Award',
+          tag: 'CAMPUS ACHIEVEMENT',
+          title: 'Penghargaan Kegiatan — Telkom University',
+          desc: 'Apresiasi partisipasi aktif dalam ajang kampus.'
+        },
+        {
+          src: 'piala badmin.jpeg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Juara+3+Badminton',
+          tag: 'SPORTS ACHIEVEMENT',
+          title: 'Juara 3 Badminton — PB. Berklasik Fun Tour',
+          desc: 'Pencapaian podium turnamen bulu tangkis.'
+        },
+        {
+          src: 'piala basket.jpeg',
+          fallback: 'https://placehold.co/800x900/141417/6EE7B7?text=Juara+3+Basket+Putra',
+          tag: 'SPORTS ACHIEVEMENT',
+          title: 'Juara 3 Basket Putra — SMAN 52 Jakarta',
+          desc: 'Kerja sama tim bola basket putra.'
+        },
+      ];
+
+      // -------------------------------------------------------
+      // 2. HERO PHOTO CAROUSEL CONTROLS (WITH MOTION TRANSITION)
+      // -------------------------------------------------------
+      let currentHeroIdx = 0;
+      const heroImg = document.getElementById('heroShowcaseImg');
+      const heroTag = document.getElementById('heroPhotoTag');
+      const heroTitle = document.getElementById('heroPhotoTitle');
+      const heroDesc = document.getElementById('heroPhotoDesc');
+      const heroCounter = document.getElementById('heroPhotoCounter');
+      const heroDots = document.getElementById('heroDots');
+
+      function renderHeroDots() {
+        heroDots.innerHTML = '';
+        activityPhotos.forEach((_, idx) => {
+          const dot = document.createElement('button');
+          dot.ariaLabel = `Go to slide ${idx + 1}`;
+          dot.className = `h-1.5 rounded-full transition-all ${
+            idx === currentHeroIdx ? 'w-6 bg-cyanBright' : 'w-1.5 bg-white/30 hover:bg-white/60'
+          }`;
+          dot.addEventListener('click', () => {
+            currentHeroIdx = idx;
+            updateHeroSlide(true);
+          });
+          heroDots.appendChild(dot);
+        });
+      }
+
+      function updateHeroSlide(withAnim = false) {
+        const item = activityPhotos[currentHeroIdx];
+        heroImg.onerror = () => {
+          heroImg.onerror = null;
+          heroImg.src = item.fallback;
+        };
+        heroImg.src = item.src;
+        heroTag.textContent = item.tag;
+        heroTitle.textContent = item.title;
+        heroDesc.textContent = item.desc;
+        heroCounter.textContent = `${String(currentHeroIdx + 1).padStart(2, '0')} / ${String(activityPhotos.length).padStart(2, '0')}`;
+        renderHeroDots();
+
+        if (withAnim) {
+          animate(heroImg, { opacity: [0.4, 1], scale: [1.04, 1] }, { duration: 0.45, easing: [0.16, 1, 0.3, 1] });
+          animate([heroTag, heroTitle, heroDesc], { opacity: [0, 1], y: [8, 0] }, { delay: stagger(0.04), duration: 0.35 });
+        }
+      }
+
+      document.getElementById('prevHeroPhoto').addEventListener('click', () => {
+        currentHeroIdx = (currentHeroIdx - 1 + activityPhotos.length) % activityPhotos.length;
+        updateHeroSlide(true);
+      });
+
+      document.getElementById('nextHeroPhoto').addEventListener('click', () => {
+        currentHeroIdx = (currentHeroIdx + 1) % activityPhotos.length;
+        updateHeroSlide(true);
+      });
+
+      updateHeroSlide(false);
+
+      // -------------------------------------------------------
+      // 3. HORIZONTAL PHOTO STRIP & LIGHTBOX
+      // -------------------------------------------------------
+      const photoStrip = document.getElementById('photoStrip');
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxDesc = document.getElementById('lightboxDesc');
+      const lightboxTag = document.getElementById('lightboxTag');
+
+      activityPhotos.forEach((photo) => {
+        const card = document.createElement('div');
+        card.className = 'snap-start shrink-0 w-56 sm:w-64 glass-surface glass-surface-hover rounded-xl overflow-hidden cursor-pointer group';
+        card.innerHTML = `
+          <div class="aspect-[4/4.5] bg-zinc-900 overflow-hidden relative">
+            <img
+              src="${photo.src}"
+              onerror="this.onerror=null;this.src='${photo.fallback}';"
+              alt="${photo.title}"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ocean/90 via-transparent to-transparent flex items-end p-3.5">
+              <div>
+                <span class="font-mono text-[10px] text-cyanBright uppercase tracking-wider">${photo.tag}</span>
+                <p class="font-display font-bold text-xs sm:text-sm text-white line-clamp-1 mt-0.5">${photo.title}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          lightboxImg.onerror = () => {
+            lightboxImg.onerror = null;
+            lightboxImg.src = photo.fallback;
+          };
+          lightboxImg.src = photo.src;
+          lightboxTitle.textContent = photo.title;
+          lightboxDesc.textContent = photo.desc;
+          lightboxTag.textContent = photo.tag;
+          lightboxModal.classList.remove('hidden');
+          lightboxModal.classList.add('flex');
+          animate(lightboxModal.firstElementChild, { opacity: [0, 1], scale: [0.94, 1] }, { duration: 0.3, easing: [0.16, 1, 0.3, 1] });
+        });
+        photoStrip.appendChild(card);
+      });
+
+      document.getElementById('stripLeftBtn').addEventListener('click', () => {
+        photoStrip.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+      document.getElementById('stripRightBtn').addEventListener('click', () => {
+        photoStrip.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+
+      function closeLightbox() {
+        lightboxModal.classList.add('hidden');
+        lightboxModal.classList.remove('flex');
+      }
+      document.getElementById('closeLightboxBtn').addEventListener('click', closeLightbox);
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) closeLightbox();
+      });
+
+      // -------------------------------------------------------
+      // 4. FULL-SCREEN DRAWER MENU
+      // -------------------------------------------------------
+      const drawerMenu = document.getElementById('drawerMenu');
+      const menuOpenBtn = document.getElementById('menuOpenBtn');
+      const menuCloseBtn = document.getElementById('menuCloseBtn');
+
+      function openDrawer() {
+        drawerMenu.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden';
+        animate('.drawer-link', { opacity: [0, 1], x: [30, 0] }, { delay: stagger(0.05, { start: 0.12 }), duration: 0.45, easing: [0.16, 1, 0.3, 1] });
+      }
+      function closeDrawer() {
+        drawerMenu.classList.add('translate-x-full');
+        document.body.style.overflow = '';
+      }
+
+      menuOpenBtn.addEventListener('click', openDrawer);
+      menuCloseBtn.addEventListener('click', closeDrawer);
+      document.querySelectorAll('.drawer-link').forEach(link => {
+        link.addEventListener('click', closeDrawer);
+      });
+
+      // -------------------------------------------------------
+      // 5. ANIMATED KPI COUNTERS ON SCROLL
+      // -------------------------------------------------------
+      const counters = document.querySelectorAll('.kpi-counter');
+      let counterStarted = false;
+
+      const animateCounters = () => {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const prefix = counter.getAttribute('data-prefix') || '';
+          const suffix = counter.getAttribute('data-suffix') || '';
+          const duration = 1400;
+          const stepTime = 25;
+          const steps = duration / stepTime;
+          const increment = target / steps;
+          let current = 0;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              counter.textContent = `${prefix}${target}${suffix}`;
+              clearInterval(timer);
+            } else {
+              counter.textContent = `${prefix}${Math.floor(current)}${suffix}`;
+            }
+          }, stepTime);
+        });
+      };
+
+      const aboutSection = document.getElementById('about');
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !counterStarted) {
+          counterStarted = true;
+          animateCounters();
+        }
+      }, { threshold: 0.25 });
+      observer.observe(aboutSection);
+
+      // -------------------------------------------------------
+      // 6. PROJECT FILTERING & DETAIL MODAL
+      // -------------------------------------------------------
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-cyanGlow', 'text-ocean', 'font-bold');
+            b.classList.add('text-slate-300');
+          });
+          btn.classList.add('bg-cyanGlow', 'text-ocean', 'font-bold');
+          btn.classList.remove('text-slate-300');
+
+          const filter = btn.getAttribute('data-filter');
+          const visibleCards = [];
+          projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.style.display = '';
+              visibleCards.push(card);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (visibleCards.length) {
+            animate(visibleCards, { opacity: [0, 1], y: [18, 0], scale: [0.98, 1] }, { delay: stagger(0.06), duration: 0.4, easing: [0.16, 1, 0.3, 1] });
+          }
+        });
+      });
+
+      // Detailed Project Data for Modal
+      const projectDetails = {
+        snackbyte: {
+          badge: 'ENTREPRENEURSHIP & F&B VENTURE',
+          title: 'SnackByte — Market Day Telkom University Jakarta',
+          metric: '±300 Porsi Terjual dalam 1 Hari',
+          summary: 'Inisiatif bisnis kuliner bertema gaming/tech yang dikembangkan dalam mata kuliah Kewirausahaan di Telkom University Jakarta.',
+          highlights: [
+            'Mencapai volume penjualan ±300 porsi dalam satu hari penuh operasional Market Day.',
+            'Varian produk unggulan: Tahu Walik Original, Tahu Walik Chilli Oil, Es Soda Gembira, dan Paket Bundle hemat.',
+            'Mengelola alur produksi dapur higienis, sistem pencatatan kasir/POS, pembagian peran tim, serta visual branding booth yang mencolok.'
+          ],
+          tags: ['Entrepreneurship', 'F&B Operations', 'Team Leadership', 'POS & Inventory', 'Branding']
+        },
+        metalix: {
+          badge: 'IOT & EMBEDDED SYSTEMS',
+          title: 'Metalix Smartbin (IoT Smart Waste Management)',
+          metric: 'Automated Metal Sorting & Blynk Telemetry',
+          summary: 'Solusi pengelolaan sampah cerdas berbasis mikrokontroler yang memisahkan limbah logam dan non-logam secara otomatis.',
+          highlights: [
+            'Menggunakan mikrokontroler ESP32 sebagai unit pemrosesan utama.',
+            'Integrasi sensor induktif LJ12A3 untuk mendeteksi material logam secara akurat.',
+            'Dilengkapi layar OLED lokal untuk status real-time serta konektivitas aplikasi Blynk untuk pemantauan jarak jauh.'
+          ],
+          tags: ['ESP32', 'Sensor Induktif LJ12A3', 'OLED Display', 'Blynk IoT', 'C++ / Arduino']
+        },
+        webdev: {
+          badge: 'WEB DEVELOPMENT & UI/UX',
+          title: 'Multi-Project Web Engineering & UI/UX Showcase',
+          metric: 'Responsive Front-End & Dynamic Back-End',
+          summary: 'Kumpulan pengembangan aplikasi web dan desain antarmuka responsif untuk kebutuhan bisnis F&B, sistem reservasi, portal informasi, dan personal branding.',
+          highlights: [
+            'SnackByte Online Shop: Web katalog produk & pemesanan digital untuk mendukung branding dan transaksi bisnis kuliner SnackByte.',
+            'Sistem Tiket Kereta Api (PT. Jugijakgijuk): Aplikasi web pemesanan tiket dengan role-based access control terpisah untuk Petugas dan Pemesan.',
+            'Portal Pengumuman Dinamis (PHP & AJAX): Pembaruan konten real-time asinkron tanpa reload halaman menggunakan server Apache.',
+            'Personal Portfolio (SAMUEL®): Desain editorial Swiss-grid dengan skema warna Obsidian & Soft Mint, custom carousel, dan deployment via GitHub & Vercel.'
+          ],
+          tags: ['HTML5 & CSS3', 'JavaScript & AJAX', 'Tailwind CSS', 'Bootstrap 5', 'PHP & MySQL', 'UI/UX Design']
+        }
+      };
+
+      const projectModal = document.getElementById('projectModal');
+      const modalBody = document.getElementById('modalBody');
+
+      projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const key = card.getAttribute('data-project');
+          const data = projectDetails[key];
+          if (!data) return;
+
+          modalBody.innerHTML = `
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center gap-2 pr-8">
+                <span class="px-3 py-1 rounded-full bg-cyanGlow/15 border border-cyanBright/40 text-cyanBright font-mono text-xs">${data.badge}</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200 font-mono text-xs">${data.metric}</span>
+              </div>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">${data.title}</h3>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">${data.summary}</p>
+              <div class="glass-surface rounded-xl p-4 sm:p-5 space-y-2.5">
+                <p class="font-mono text-xs uppercase tracking-widest text-cyanBright">Key Highlights &amp; Execution:</p>
+                <ul class="space-y-2 text-sm text-slate-200">
+                  ${data.highlights.map(item => `<li class="flex items-start gap-2.5"><span class="text-cyanBright mt-0.5">▹</span><span>${item}</span></li>`).join('')}
+                </ul>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-2">
+                ${data.tags.map(t => `<span class="px-3 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-slate-300">${t}</span>`).join('')}
+              </div>
+            </div>
+          `;
+          projectModal.classList.remove('hidden');
+          projectModal.classList.add('flex');
+          animate(projectModal.firstElementChild, { opacity: [0, 1], y: [24, 0], scale: [0.95, 1] }, { duration: 0.32, easing: [0.16, 1, 0.3, 1] });
+        });
+      });
+
+      function closeProjectModal() {
+        projectModal.classList.add('hidden');
+        projectModal.classList.remove('flex');
+      }
+      document.getElementById('closeProjectModal').addEventListener('click', closeProjectModal);
+      projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) closeProjectModal();
+      });
+
+      // -------------------------------------------------------
+      // 7. FAQ ACCORDION INTERACTION
+      // -------------------------------------------------------
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const trigger = item.querySelector('.faq-trigger');
+        trigger.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!isActive) item.classList.add('active');
+        });
+      });
+
+      // -------------------------------------------------------
+      // 8. CONTACT FORM (FORMSPREE AJAX) & TOAST NOTIFICATION
+      // -------------------------------------------------------
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeagpzgr';
+      const contactForm = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitContactBtn');
+      const toast = document.getElementById('toastNotification');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMsg = document.getElementById('toastMessage');
+
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('senderName').value.trim();
+        const originalBtnHTML = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+        submitBtn.innerHTML = '<span>Mengirim...</span>';
+
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            toastTitle.textContent = 'Pesan Terkirim!';
+            toastMsg.textContent = `Halo ${name}, pesan Anda berhasil dikirim ke email Samuel!`;
+            contactForm.reset();
+          } else {
+            const data = await response.json();
+            toastTitle.textContent = 'Gagal Mengirim';
+            toastMsg.textContent = data.errors
+              ? data.errors.map(err => err.message).join(', ')
+              : 'Terjadi kesalahan pada Formspree. Silakan coba lagi.';
+          }
+        } catch (error) {
+          toastTitle.textContent = 'Koneksi Bermasalah';
+          toastMsg.textContent = 'Periksa koneksi internet Anda lalu coba kirim kembali.';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+          submitBtn.innerHTML = originalBtnHTML;
+          lucide.createIcons();
+
+          toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+          setTimeout(() => {
+            toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+          }, 4500);
+        }
+      });
+
+      // Escape Key Closes Modals/Drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeDrawer();
+          closeProjectModal();
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
